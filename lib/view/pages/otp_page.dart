@@ -18,6 +18,7 @@ class OtpScreen extends StatelessWidget {
     return BlocProvider(
       create: (_) => OtpCubit(),
       child: Scaffold(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: Stack(
           children: [
             SingleChildScrollView(
@@ -31,12 +32,12 @@ class OtpScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         'OTP Verification',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF143D5A),
+                          color: Theme.of(context).primaryColor,
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -48,7 +49,6 @@ class OtpScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
-                          color: Color.fromARGB(255, 3, 14, 20),
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -62,7 +62,7 @@ class OtpScreen extends StatelessWidget {
                               MyDialog(state.message,(){
                                 Navigator.pop(context);
                                   Navigator.of(context).pushAndRemoveUntil(
-                                      MaterialPageRoute(builder: (context) =>   CustomNavBar()), (Route<dynamic> route) => false,);
+                                      MaterialPageRoute(builder: (context) =>   CustomNavBar(userId: userId,)), (Route<dynamic> route) => false,);
                               } ,context);
                             });
 
@@ -86,11 +86,10 @@ class OtpScreen extends StatelessWidget {
                                 context.read<OtpCubit>().Otp(userId: userId, context: context);
                                 },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF143D5A),
+                                backgroundColor: Theme.of(context).primaryColor,
                               ),
-                              child: const Text(
+                              child: Text(
                                 'Verify',
-                                style: TextStyle(color: Color(0xFFF5F5DC)),
                               ),
                             ),
                           );
@@ -121,10 +120,9 @@ class OtpScreen extends StatelessWidget {
                                 alignment: Alignment.centerRight,
                                 child: TextButton(onPressed: (){
                                   context.read<OtpCubit>().reSendOtp(userId: userId, context: context);
-                                }, child: const Text('Resend Code',style: TextStyle(
-                                  color: Color(0xFF145371),
+                                }, child: Text('Resend Code',style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
                                   fontSize: 17,
-                                  decoration: TextDecoration.underline,
                                 ),)));
                             }
                           },

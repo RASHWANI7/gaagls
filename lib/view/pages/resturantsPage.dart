@@ -48,7 +48,7 @@ class _ResturantsPageState extends State<ResturantsPage> {
                     child: RestaurantPageCard(
                       resturant: restaurant,
                       width: double.infinity,
-                      imageHeight: screenHeight * 0.22,
+                      imageHeight: screenHeight * 0.3,
                       onTap: () {
                         Navigator.push(
                           context,

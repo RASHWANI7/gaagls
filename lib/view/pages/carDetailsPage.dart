@@ -111,12 +111,36 @@ class _CarDetailsPageState extends State<CarDetailsPage> with SingleTickerProvid
         },
         child: Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          appBar: AppBar(
-            title: Text(widget.companyName),
-            backgroundColor: Theme.of(context).primaryColor,
-            foregroundColor: Colors.white,
-            centerTitle: true,
+          // appBar: AppBar(
+          //   title: Text(widget.companyName),
+          //   backgroundColor: Theme.of(context).primaryColor,
+          //   foregroundColor: Colors.white,
+          //   centerTitle: true,
+          // ),
+
+          appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(kToolbarHeight),
+            child: BlocBuilder<CarDetailsCubit, CarDetailsState>(
+              builder: (context, state) {
+                // تحقق من أن currentIndex صالح
+                final index = (state.currentIndex >= 0 && state.currentIndex < widget.cars.length)
+                    ? state.currentIndex
+                    : 0;
+                return AppBar(
+                  title: Text(
+                    widget.cars[index].brand,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  backgroundColor: Theme.of(context).primaryColor,
+                  foregroundColor: Colors.white,
+                  centerTitle: true,
+                );
+              },
+            ),
           ),
+
+
+
           body: BlocBuilder<CarDetailsCubit, CarDetailsState>(
             builder: (context, state) {
               _handleSlideAnimation(cubit.slideDirection);
@@ -230,6 +254,11 @@ class _CarDetailsPageState extends State<CarDetailsPage> with SingleTickerProvid
                                         ),
                                       ),
                                       onPressed: () async {
+                                        // final newCar = car.copyWith(isFavorite: !car.isFavorite); // نسخة جديدة
+                                        // setState(() {
+                                        //   // استبدل السيارة القديمة بالنسخة الجديدة في القائمة المحلية
+                                        //   widget.cars[index] = newCar;
+                                        // });
                                         final result = await context.read<CarsCubit>().toggleCarFavorite(car);
                                         SecondSnackBar(
                                           result['message'],
@@ -243,6 +272,7 @@ class _CarDetailsPageState extends State<CarDetailsPage> with SingleTickerProvid
                                 ),
                               ),
                             ),
+
 
                             Positioned(
                               top: 8,
@@ -481,7 +511,7 @@ class _CarDetailsPageState extends State<CarDetailsPage> with SingleTickerProvid
                             iconEnabledColor: Theme.of(context).iconTheme.color,
                             items: const [
                               DropdownMenuItem(value: 'Credit Card', child: Text('Credit Card')),
-                              DropdownMenuItem(value: 'Paypal', child: Text('Paypal')),
+                              DropdownMenuItem(value: 'paypal', child: Text('Paypal')),
                             ],
                             onChanged: isLoading ? null : (val) {
                               _paymentMethodNotifier.value = val;

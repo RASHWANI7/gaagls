@@ -194,29 +194,32 @@ class TripDetailsPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   // Description card - تم تغيير لون الخلفية هنا
-                  _buildCard(
-                    backgroundColor: Theme.of(context).cardColor, // استخدام اللون الجديد
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Trip Description",
-                          style: theme.textTheme.headlineSmall?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).colorScheme.secondary,
+                  SizedBox(
+                    width: screenWidth,
+                    child: _buildCard(
+                      backgroundColor: Theme.of(context).cardColor, // استخدام اللون الجديد
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Trip Description",
+                            style: theme.textTheme.headlineSmall?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).colorScheme.secondary,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 15),
-                        Text(
-                          trip.description,
-                          style: theme.textTheme.bodyLarge?.copyWith(
-                            height: 1.6,
-                            color: Theme.of(context).iconTheme.color,
+                          const SizedBox(height: 15),
+                          Text(
+                            trip.description,
+                            style: theme.textTheme.bodyLarge?.copyWith(
+                              height: 1.6,
+                              color: Theme.of(context).iconTheme.color,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
+                      context: context
                     ),
-                    context: context
                   ),
                   const SizedBox(height: 20),
                   // Destination info card - تم تغيير لون الخلفية هنا

@@ -504,27 +504,30 @@ class _ResturantDetailsPageState extends State<ResturantDetailsPage> {
                     const SizedBox(height: 20),
 
 
-                    _buildCard(
-                      backgroundColor: Theme.of(context).cardColor,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Restaurant Description",
-                            style: theme.textTheme.headlineSmall?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).colorScheme.secondary,
+                    SizedBox(
+                      width: screenWidth,
+                      child: _buildCard(
+                        backgroundColor: Theme.of(context).cardColor,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Restaurant Description",
+                              style: theme.textTheme.headlineSmall?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.secondary,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 15),
-                          Text(
-                            widget.resturant.description,
-                            style: theme.textTheme.bodyLarge?.copyWith(
-                              height: 1.6,
-                              color: Theme.of(context).iconTheme.color,
+                            const SizedBox(height: 15),
+                            Text(
+                              widget.resturant.description,
+                              style: theme.textTheme.bodyLarge?.copyWith(
+                                height: 1.6,
+                                color: Theme.of(context).iconTheme.color,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
 

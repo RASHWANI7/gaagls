@@ -103,132 +103,284 @@ class AirlineDetailsPage extends StatelessWidget {
 
                   const SizedBox(height: 20),
 
-// 🟦 بطاقة التقييم
-                  _buildCard(
-                    backgroundColor: Theme.of(context).cardColor,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Airline Rating",
-                          style: theme.textTheme.headlineSmall?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).colorScheme.secondary,
-                          ),
-                        ),
-                        const SizedBox(height: 15),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
-                            borderRadius: BorderRadius.circular(16),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.blue.shade100.withOpacity(0.3),
-                                blurRadius: 12,
-                                offset: const Offset(0, 5),
-                              ),
-                            ],
-                            border: Border.all(color: Colors.blue.shade100, width: 1.2),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Restaurant Rating",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
-                                  color: Theme.of(context).colorScheme.secondary,
-                                ),
-                              ),
-                              const SizedBox(height: 10),
-                              RatingBarIndicator(
-                                rating: double.tryParse(airline.stars.toString()) ?? 0,
-                                itemBuilder: (context, _) => Icon(
-                                  Icons.star_rounded,
-                                  color: Colors.yellow[600],
-                                ),
-                                itemCount: 5,
-                                itemSize: 28.0,
-                                unratedColor: Colors.blue.shade100,
-                                direction: Axis.horizontal,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    context: context,
-                  ),
+// // 🟦 بطاقة التقييم
+//                   _buildCard(
+//                     backgroundColor: Theme.of(context).cardColor,
+//                     child: Column(
+//                       crossAxisAlignment: CrossAxisAlignment.start,
+//                       children: [
+//                         Text(
+//                           "Airline Rating",
+//                           style: theme.textTheme.headlineSmall?.copyWith(
+//                             fontWeight: FontWeight.bold,
+//                             color: Theme.of(context).colorScheme.secondary,
+//                           ),
+//                         ),
+//                         const SizedBox(height: 15),
+//                         Container(
+//                           padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+//                           decoration: BoxDecoration(
+//                             color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
+//                             borderRadius: BorderRadius.circular(16),
+//                             boxShadow: [
+//                               BoxShadow(
+//                                 color: Colors.blue.shade100.withOpacity(0.3),
+//                                 blurRadius: 12,
+//                                 offset: const Offset(0, 5),
+//                               ),
+//                             ],
+//                             border: Border.all(color: Colors.blue.shade100, width: 1.2),
+//                           ),
+//                           child: Column(
+//                             crossAxisAlignment: CrossAxisAlignment.start,
+//                             children: [
+//                               Text(
+//                                 "Restaurant Rating",
+//                                 style: TextStyle(
+//                                   fontSize: 14,
+//                                   fontWeight: FontWeight.w600,
+//                                   color: Theme.of(context).colorScheme.secondary,
+//                                 ),
+//                               ),
+//                               const SizedBox(height: 5),
+//                               RatingBarIndicator(
+//                                 rating: double.tryParse(airline.stars.toString()) ?? 0,
+//                                 itemBuilder: (context, _) => Icon(
+//                                   Icons.star_rounded,
+//                                   color: Colors.yellow[600],
+//                                 ),
+//                                 itemCount: 5,
+//                                 itemSize: 28.0,
+//                                 unratedColor: Colors.blue.shade100,
+//                                 direction: Axis.horizontal,
+//                               ),
+//                             ],
+//                           ),
+//                         ),
+//                       ],
+//                     ),
+//                     context: context,
+//                   ),
+//
+//                   const SizedBox(height: 15),
+//
+// // 🟦 بطاقة الموقع
+//                   _buildCard(
+//                     backgroundColor: Theme.of(context).cardColor,
+//                     child: Column(
+//                       crossAxisAlignment: CrossAxisAlignment.start,
+//                       children: [
+//                         Text(
+//                           "Airline Location",
+//                           style: theme.textTheme.headlineSmall?.copyWith(
+//                             fontWeight: FontWeight.bold,
+//                             color: Theme.of(context).colorScheme.secondary,
+//                           ),
+//                         ),
+//                         const SizedBox(height: 15),
+//                         Row(
+//                           children: [
+//                             Expanded(
+//                               child: _buildDestinationInfo(
+//                                 icon: Icons.location_city,
+//                                 title: "City",
+//                                 value: ' ${airline.location}',
+//                                 color: Theme.of(context).colorScheme.secondary,
+//                                 backgroundColor: Theme.of(context).secondaryHeaderColor,
+//                                 context: context,
+//                               ),
+//                             ),
+//                           ],
+//                         ),
+//                       ],
+//                     ),
+//                     context: context,
+//                   ),
+//
+//                   const SizedBox(height: 20),
+//
+// // 🟦 الوصف
+//                   _buildCard(
+//                     backgroundColor: Theme.of(context).cardColor,
+//                     child: Column(
+//                       crossAxisAlignment: CrossAxisAlignment.start,
+//                       children: [
+//                         Text(
+//                           "Airline Description",
+//                           style: theme.textTheme.headlineSmall?.copyWith(
+//                             fontWeight: FontWeight.bold,
+//                             color: Theme.of(context).colorScheme.secondary,
+//                           ),
+//                         ),
+//                         const SizedBox(height: 15),
+//                         Text(
+//                           airline.description,
+//                           style: theme.textTheme.bodyLarge?.copyWith(
+//                             height: 1.6,
+//                             color: Theme.of(context).iconTheme.color,
+//                           ),
+//                         ),
+//                       ],
+//                     ),
+//                     context: context,
+//                   ),
 
-                  const SizedBox(height: 15),
 
-// 🟦 بطاقة الموقع
-                  _buildCard(
-                    backgroundColor: Theme.of(context).cardColor,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+
+
+
+
+
+                  IntrinsicHeight(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch, // يضمن أن البطاقتين بنفس الطول
                       children: [
-                        Text(
-                          "Airline Location",
-                          style: theme.textTheme.headlineSmall?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).colorScheme.secondary,
-                          ),
-                        ),
-                        const SizedBox(height: 15),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: _buildDestinationInfo(
-                                icon: Icons.location_city,
-                                title: "City",
-                                value: ' ${airline.location}',
-                                color: Theme.of(context).colorScheme.secondary,
-                                backgroundColor: Theme.of(context).secondaryHeaderColor,
-                                context: context,
-                              ),
+                        // 🟦 بطاقة التقييم
+                        Expanded(
+                          child: _buildCard(
+                            backgroundColor: Theme.of(context).cardColor,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Airline Rating",
+                                  style: theme.textTheme.headlineSmall?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: Theme.of(context).colorScheme.secondary,
+                                  ),
+                                ),
+                                const SizedBox(height: 35),
+                    // 👇 هذا هو الكونتينر الداخلي
+                    FractionallySizedBox(
+                      widthFactor: 1.11,   // ياخذ العرض كامل
+                      child: Container(
+                         padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 7),
+                         decoration: BoxDecoration(
+                           color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
+                           borderRadius: BorderRadius.circular(16),
+                           boxShadow: [
+                             BoxShadow(
+                               color: Colors.blue.shade100.withOpacity(0.3),
+                               blurRadius: 12,
+                               offset: const Offset(0, 5),
+                             ),
+                           ],
+                           border: Border.all(color: Colors.blue.shade100, width: 1.2),
+                         ),
+                         child: Center(
+                           child: Column(
+                             crossAxisAlignment: CrossAxisAlignment.center,
+                             children: [
+                               Text(
+                                 "Airline Rating",
+                                 style: TextStyle(
+                                   fontSize: 14,
+                                   fontWeight: FontWeight.w600,
+                                   color: Theme.of(context).colorScheme.secondary,
+                                 ),
+                               ),
+                               const SizedBox(height: 5),
+                               RatingBarIndicator(
+                                 rating: double.tryParse(airline.stars.toString()) ?? 0,
+                                 itemBuilder: (context, _) => Icon(
+                                   Icons.star_rounded,
+                                   color: Colors.yellow[600],
+                                 ),
+                                 itemCount: 5,
+                                 itemSize: 28.0,
+                                 unratedColor: Colors.blue.shade100,
+                                 direction: Axis.horizontal,
+                               ),
+                             ],
+                           ),
+                         ),
+                       ))
+                              ],
                             ),
-                          ],
+                            context: context,
+                          ),
+                        ),
+
+
+
+
+                        const SizedBox(width: 15),
+
+                        // 🟦 بطاقة الموقع
+                        Expanded(
+                          child: _buildCard(
+                            backgroundColor: Theme.of(context).cardColor,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center, // توسيط عمودي
+                              crossAxisAlignment: CrossAxisAlignment.center, // توسيط أفقي
+                              children: [
+                                Text(
+                                  "Airline Location",
+                                  textAlign: TextAlign.center,
+                                  style: theme.textTheme.titleMedium?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                    color: Theme.of(context).colorScheme.secondary,
+                                  ),
+                                ),
+                                const SizedBox(height: 12),
+                                FractionallySizedBox(
+                                  widthFactor: 1.11,
+                                  child: _buildDestinationInfo(
+                                    icon: Icons.location_city,
+                                    title: "City",
+                                    value: ' ${airline.location}',
+                                    color: Theme.of(context).colorScheme.secondary,
+                                    backgroundColor: Theme.of(context).secondaryHeaderColor,
+                                    context: context,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            context: context,
+                          ),
                         ),
                       ],
                     ),
-                    context: context,
                   ),
 
                   const SizedBox(height: 20),
 
-// 🟦 الوصف
-                  _buildCard(
-                    backgroundColor: Theme.of(context).cardColor,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Airline Description",
-                          style: theme.textTheme.headlineSmall?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).colorScheme.secondary,
-                          ),
+
+              SizedBox(
+                width: double.infinity, // ياخذ العرض كامل
+                child: _buildCard(
+                  backgroundColor: Theme.of(context).cardColor,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Airline Description",
+                        style: theme.textTheme.headlineSmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.secondary,
                         ),
-                        const SizedBox(height: 15),
-                        Text(
-                          airline.description,
-                          style: theme.textTheme.bodyLarge?.copyWith(
-                            height: 1.6,
-                            color: Theme.of(context).iconTheme.color,
-                          ),
+                      ),
+                      const SizedBox(height: 15),
+                      Text(
+                        airline.description,
+                        style: theme.textTheme.bodyLarge?.copyWith(
+                          height: 1.6,
+                          color: Theme.of(context).iconTheme.color,
                         ),
-                      ],
-                    ),
-                    context: context,
+                      ),
+                    ],
                   ),
+                  context: context,
+                ),
+              ),
 
 
 
 
-                ],
+
+              ],
               ),
             ),
           ),

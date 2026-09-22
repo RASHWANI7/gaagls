@@ -10,8 +10,10 @@ import 'package:gaagls/view/pages/settingPage.dart';
 import 'package:gaagls/view/widgets/MyDrawer.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:provider/provider.dart';
+import 'package:remixicon/remixicon.dart';
 
 import '../../controller/cubits/favoriteCubit/favoriteCubit.dart';
+import '../../globals/globals.dart';
 
 // class CustomNavBar extends StatelessWidget {
 //   CustomNavBar({super.key});
@@ -277,27 +279,42 @@ import '../../controller/cubits/favoriteCubit/favoriteCubit.dart';
 
 
 
-class CustomNavBar extends StatelessWidget {
-  CustomNavBar({super.key});
+class CustomNavBar extends StatefulWidget {
+  final int userId; // أضف متغير userId
+  CustomNavBar({super.key,required this.userId});
 
+  @override
+  State<CustomNavBar> createState() => _CustomNavBarState();
+}
+
+class _CustomNavBarState extends State<CustomNavBar> {
   final List<IconData> icons = [
-    Icons.account_circle,
-    Icons.favorite_border,
-    Icons.home_outlined,
-    Icons.search,
-    Icons.settings_outlined,
+    //Icons.account_circle,
+    RemixIcons.user_3_line,
+    //Icons.favorite_border,
+    RemixIcons.heart_2_line,
+    //Icons.home_outlined,
+    RemixIcons.home_9_line,
+    //Icons.search,
+    RemixIcons.search_line,
+    //Icons.settings_outlined,
+    RemixIcons.settings_5_line
   ];
 
-  final List<Widget> pages = [
-    ProfileScreen(), // Account
-    FavoritePage(), // Favorites
-    HomePage(),    // Home
-    SearchPage(),  // Search
-    SettingsPage(), // Settings
-  ];
+
 
   @override
   Widget build(BuildContext context) {
+
+    final List<Widget> pages = [
+      ProfileScreen(), // Account
+      FavoritePage(), // Favorites
+      //HomePage(),    // Home
+      HomePage(id: widget.userId), // استخدم القيمة المخزنة
+      SearchPage(),  // Search
+      SettingsPage(), // Settings
+    ];
+
     final screenWidth  = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 

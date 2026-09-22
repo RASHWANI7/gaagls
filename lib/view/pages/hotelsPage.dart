@@ -28,7 +28,7 @@ class _HotelsPageState extends State<HotelsPage> {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(title: const Text('الفنادق')),
+      appBar: AppBar(title: const Text('Hotels'),centerTitle: true,),
       body: SafeArea(
         child: BlocBuilder<HotelsCubit, HotelsState>(
           builder: (context, state) {
@@ -47,7 +47,7 @@ class _HotelsPageState extends State<HotelsPage> {
                     child: HotelPageCard(
                       hotel: hotel,
                       width: double.infinity,
-                      imageHeight: screenHeight*0.23,
+                      imageHeight: screenHeight*0.3,
                       onTap: () {
                         Navigator.push(
                           context,

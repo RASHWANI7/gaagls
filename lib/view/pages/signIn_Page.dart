@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gaagls/controller/cubits/logInCubit/logInCubit.dart';
 import 'package:gaagls/controller/cubits/logInCubit/logInState.dart';
+import 'package:gaagls/globals/globals.dart';
 import 'package:gaagls/view/pages/customNavBar.dart';
 import 'package:gaagls/view/pages/homePage.dart';
 import 'package:gaagls/view/pages/otp_page.dart';
@@ -28,6 +29,7 @@ class _SignInState extends State<SignIn> {
 
 
 
+
   @override
   void dispose() {
     emailController.dispose();
@@ -38,6 +40,7 @@ class _SignInState extends State<SignIn> {
   }
 
   late final int userId;
+  late final int id = Globals().getUserId() as int;
 
   @override
   Widget build(BuildContext context) {
@@ -119,7 +122,7 @@ class _SignInState extends State<SignIn> {
                             Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => CustomNavBar()),
+                                  builder: (context) => CustomNavBar(userId: id,)),
                               (Route<dynamic> route) => false,
                             );
                           }, context);

@@ -28,7 +28,7 @@ class _RoomsPageState extends State<RoomsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('الغرف')),
+      appBar: AppBar(title: const Text('Rooms'),centerTitle: true,),
       body: SafeArea(
         child: BlocBuilder<RoomsCubit, RoomsState>(
           builder: (context, state) {
@@ -38,7 +38,7 @@ class _RoomsPageState extends State<RoomsPage> {
               final rooms = state.rooms;
 
               return ListView.builder(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(12),
                 itemCount: rooms.length,
                 itemBuilder: (context, index) {
                   final room = rooms[index];

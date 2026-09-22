@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gaagls/controller/cubits/bookingCubit/bookingCubit.dart';
+import 'package:remixicon/remixicon.dart';
 import '../../model/bookingType.dart';
 import '../../model/roomBooking.dart';
 
@@ -25,7 +26,7 @@ class BookingItemCard extends StatelessWidget {
     switch (bookingItem.type) {
       case BookingType.room:
         final b = bookingItem.booking as RoomBooking;
-        icon = Icons.hotel;
+        icon = RemixIcons.hotel_line;
         title = 'Room Booking #${b.roomId}';
         fields = {
          // 'Check-In': b.checkIn,
@@ -42,7 +43,7 @@ class BookingItemCard extends StatelessWidget {
 
       case BookingType.carRental:
         final b = bookingItem.booking as CarRentalBooking;
-        icon = Icons.directions_car;
+        icon = RemixIcons.car_line;
         title = 'Car Rental #${b.carRentalCarId}';
         fields = {
           // 'Start': b.start,
@@ -58,7 +59,7 @@ class BookingItemCard extends StatelessWidget {
 
       case BookingType.flight:
         final b = bookingItem.booking as FlightBooking;
-        icon = Icons.flight;
+        icon = RemixIcons.plane_line;
         title = 'Flight #${b.flightId}';
         fields = {
           // 'Tickets': '${b.numberOfTickets}',
@@ -74,7 +75,7 @@ class BookingItemCard extends StatelessWidget {
 
       case BookingType.trip:
         final b = bookingItem.booking as TripBooking;
-        icon = Icons.tour;
+        icon = RemixIcons.map_line;
         title = 'Trip #${b.tripId}';
         fields = {
           // 'Tickets': '${b.numberOfTickets}',
@@ -89,7 +90,7 @@ class BookingItemCard extends StatelessWidget {
 
       case BookingType.restaurant:
         final b = bookingItem.booking as RestaurantBooking;
-        icon = Icons.restaurant;
+        icon = RemixIcons.restaurant_line;
         title = 'Restaurant #${b.restaurantId}';
         fields = {
           'Seats': '${b.numberOfSeats}',

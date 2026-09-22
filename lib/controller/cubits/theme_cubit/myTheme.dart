@@ -147,17 +147,31 @@
 import 'package:flutter/material.dart';
 
 class MyThemes {
-  static const Color primaryColor = Color(0xFF0b47a0);
-  static const Color secondaryColor = Color(0xFF1362bb);
+  //static const Color primaryColor = Color(0xFF0b47a0);
+  static const Color primaryColor = Color(0xFF126AD2);
 
-  static  Color backgroundLight = Colors.grey.shade400;
-  static  Color backgroundDark = Colors.grey.shade900;
+
+  //static const Color secondaryColor = Color(0xFF1362bb);
+  static const Color secondaryColor = Color(0xFF187DE9);
+
+  //static  Color backgroundLight = Colors.grey.shade400;
+  static  Color backgroundLight = Colors.grey.shade200;
+
+  //static  Color backgroundDark = Colors.grey.shade900;
+  static  Color backgroundDark = Color(0XFF121212);
+
 
   static const Color textLight = Colors.black87;
   static const Color textDark = Colors.white;
 
-  static  Color cardLight = Colors.grey.shade300;
-  static  Color cardDark = Colors.grey.shade800;
+  //static  Color cardLight = Colors.grey.shade300;
+  static  Color cardLight = Colors.white;
+
+
+  //static  Color cardDark = Colors.grey.shade800;
+  static  Color cardDark = Color(0XFF2D2D2D);
+
+
 
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,

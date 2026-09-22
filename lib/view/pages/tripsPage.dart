@@ -50,7 +50,7 @@ class _TripsPageState extends State<TripsPage> {
                     child: TripPageCard(
                       trip: trip,
                       width: double.infinity,
-                      imageHeight: screenHeight * 0.24,
+                      imageHeight: screenHeight * 0.3,
                       onTap: () {
                         Navigator.push(
                           context,

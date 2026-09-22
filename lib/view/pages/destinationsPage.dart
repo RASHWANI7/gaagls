@@ -69,7 +69,7 @@ class _DestinationsPageState extends State<DestinationsPage> {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(title: const Text('الوجهات')),
+      appBar: AppBar(title: const Text('Destinations'),centerTitle: true,),
       body: SafeArea(
         child: BlocBuilder<DestinationsCubit, DestinationsState>(
           builder: (context, state) {

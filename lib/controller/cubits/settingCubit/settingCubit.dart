@@ -264,7 +264,7 @@ class SettingsCubit extends Cubit<Settingstate> {
 
         await Globals().deleteToken();
 
-        emit(SettingLogoutSuccess());
+        emit(SettingLogoutSuccess(message: message));
       }
       else if(response.statusCode==422){
 

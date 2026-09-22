@@ -25,7 +25,7 @@ class _BookingsPageState extends State<BookingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('الحجوزات'),
+        title: const Text('My Reservations'),
         centerTitle: true,
       ),
       body: BlocBuilder<BookingsCubit, BookingsState>(
@@ -38,13 +38,18 @@ class _BookingsPageState extends State<BookingsPage> {
 
             final bookings = state.bookings;
 
-            return ListView.builder(
-              itemCount: bookings.length,
-              itemBuilder: (context, index) {
-                final bookingItem = bookings[index];
-                return BookingItemCard(bookingItem: bookingItem);
-              },
-            );
+            if(bookings.isEmpty){
+              return const Center(child:  Text('You don\'t have reservations yet',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),));
+            }
+            else {
+              return ListView.builder(
+                itemCount: bookings.length,
+                itemBuilder: (context, index) {
+                  final bookingItem = bookings[index];
+                  return BookingItemCard(bookingItem: bookingItem);
+                },
+              );
+            }
           } else if (state is BookingsError) {
             return Center(child: Text('حدث خطأ: ${state.message}'));
           } else {

@@ -424,7 +424,7 @@ class _RoomDetailsPageState extends State<RoomDetailsPage> {
             );
           },
           icon: Icon(Icons.hotel_rounded, size: 26,color: Colors.white,),
-          label:  Padding(
+          label:  const Padding(
             padding: EdgeInsets.symmetric(vertical: 14),
             child: Text(
               "Book This Room",
@@ -592,25 +592,28 @@ class _RoomDetailsPageState extends State<RoomDetailsPage> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).cardColor,
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Theme.of(context).primaryColor,
-                          blurRadius: 8,
-                          offset: const Offset(0, 3),
+                  SizedBox(
+                    width: screenWidth,
+                    child: Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).cardColor,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Theme.of(context).primaryColor,
+                            blurRadius: 8,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Text(
+                        widget.room.description,
+                        style: TextStyle(
+                          fontSize: 16,
+                          height: 1.5,
+                          color: Theme.of(context).iconTheme.color,
                         ),
-                      ],
-                    ),
-                    child: Text(
-                      widget.room.description,
-                      style: TextStyle(
-                        fontSize: 16,
-                        height: 1.5,
-                        color: Theme.of(context).iconTheme.color,
                       ),
                     ),
                   ),

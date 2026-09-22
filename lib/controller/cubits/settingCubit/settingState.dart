@@ -42,7 +42,10 @@ class SelectedCityChanged extends Settingstate{
 
 class SettingLogoutLoading extends Settingstate {}
 
-class SettingLogoutSuccess extends Settingstate {}
+class SettingLogoutSuccess extends Settingstate {
+  final String message;
+  SettingLogoutSuccess({required this.message});
+}
 
 class SettingLogoutFailure extends Settingstate {
   final String error;

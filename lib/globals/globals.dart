@@ -4,16 +4,20 @@ import '../constants/constants.dart';
 class Globals{
 
   final String ip='172.16.40.9:8000';
-  final String ngrok='https://28b1cf441fab.ngrok-free.app';
+  final String ngrok='https://552c9092d1ad.ngrok-free.app';
 
   Future<void> saveTokenAndCityId({required String token,required int city_id}) async {
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString(Constants.Access_Token, token);
     await prefs.setInt(Constants.Access_CityId, city_id);
-
   }
 
+  Future<void> saveUserId({required int user_id}) async {
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(Constants.Access_UserId, user_id);
+  }
 
 
   Future<String?> getToken() async {
@@ -26,6 +30,12 @@ class Globals{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int? city_id = prefs.getInt(Constants.Access_CityId);
     return city_id;
+  }
+
+  Future<int?> getUserId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int? user_id = prefs.getInt(Constants.Access_UserId);
+    return user_id;
   }
 
   Future<void> deleteToken() async {

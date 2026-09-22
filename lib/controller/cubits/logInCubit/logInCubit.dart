@@ -32,6 +32,8 @@ class LoginCubit extends Cubit<Loginstate> {
       print('Response Status Code: ${response.statusCode}');
 
 
+      print(response.statusCode);
+
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> jsonResponse = jsonDecode(response.body);
@@ -40,12 +42,16 @@ class LoginCubit extends Cubit<Loginstate> {
         final String userToken = jsonResponse['token'];
         final needToVerify = jsonDecode(response.body)['need_verify'];
         final cityId = jsonDecode(response.body)['city_id'];
+        final id = jsonDecode(response.body)['id'];
 
          // print('The token is: $userToken');
           print(message);
           print(cityId);
+          print(id);
 
         Globals().saveTokenAndCityId(token: userToken,city_id:  cityId);
+
+        Globals().saveUserId(user_id:id);
 
 
           emit(loginSuccess(message: message));
@@ -63,6 +69,7 @@ class LoginCubit extends Cubit<Loginstate> {
       } else if (response.statusCode == 422) { // حالة الأخطاء في الإدخال
         final errorMessage = jsonDecode(response.body)['message'];
         emit(loginFailure(errorMessage));
+        print(errorMessage);
       }else if(response.statusCode==403){
         final errorMessage = jsonDecode(response.body)['message'];
         final userId = jsonDecode(response.body)['user_id'];
@@ -72,6 +79,7 @@ class LoginCubit extends Cubit<Loginstate> {
         emit(loginFailure('فشل تسجيل الدخول. يرجى المحاولة مرة أخرى.'));
       }
     } catch (e) {
+      print(e);
       emit(loginFailure('خطأ أثناء تسجيل الدخول: $e'));
     }
   }

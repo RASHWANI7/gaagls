@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:remixicon/remixicon.dart';
 
 import '../pages/carBrandPage.dart';
 import '../pages/destinationsPage.dart';
 import '../pages/hotelsPage.dart';
 import '../pages/resturantsPage.dart';
 import '../pages/tripsPage.dart';
+
 
 class CategoryItem extends StatelessWidget {
   final IconData icon;
@@ -33,7 +35,7 @@ class CategoryItem extends StatelessWidget {
               color: color,
               borderRadius: BorderRadius.circular(50),
             ),
-            child: Icon(icon, size: 35, color: iconColor),
+            child: Icon(icon, size: 35, color: Colors.white),
           ),
         ),
         Text(
@@ -53,7 +55,7 @@ class CategoryList extends StatelessWidget {
   Widget build(BuildContext context) {
     final categories = [
       {
-        "icon": Icons.hotel,
+        "icon": RemixIcons.hotel_line,
         "label": "Hotels",
         "onTap": () {
           Navigator.push(context,
@@ -61,7 +63,7 @@ class CategoryList extends StatelessWidget {
         },
       },
       {
-        "icon": Icons.restaurant,
+        "icon": RemixIcons.restaurant_line,
         "label": "Resturants",
         "onTap": () {
           Navigator.push(context,
@@ -69,7 +71,7 @@ class CategoryList extends StatelessWidget {
         },
       },
       {
-        "icon": Icons.map,
+        "icon": RemixIcons.map_line,
         "label": "Trips",
         "onTap": () {
           Navigator.push(context,
@@ -77,7 +79,7 @@ class CategoryList extends StatelessWidget {
         },
       },
       {
-        "icon": Icons.car_rental,
+        "icon": RemixIcons.car_line,
         "label": "Cars",
         "onTap": () {
           Navigator.push(context,
@@ -85,7 +87,7 @@ class CategoryList extends StatelessWidget {
         },
       },
       {
-        "icon": Icons.location_city,
+        "icon": RemixIcons.plane_line,
         "label": "Destinations",
         "onTap": () {
           Navigator.push(
